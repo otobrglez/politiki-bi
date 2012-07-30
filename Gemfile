@@ -4,11 +4,11 @@ source :rubygems
 gem 'rack'
 gem 'puma'
 
-gem 'mondrian-olap', "~> 0.3.0"
+gem 'mondrian-olap', :git => 'git://github.com/rsim/mondrian-olap.git', :branch => 'master'
 
 gem 'activerecord'
 gem 'activerecord-jdbc-adapter'
-gem 'jdbc-mysql', :require=>false
+gem 'jdbc-mysql'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'mysql2'
 

@@ -14,3 +14,22 @@ task :dump_schema do
 	ActiveRecord::Base.logger = Logger.new("/dev/null")
 	ActiveRecord::SchemaDumper.dump
 end
+
+desc "PErform MDX query"
+task :mdx do
+
+	query = ""
+	unless $stdin.tty?
+	  $stdin.each_line do |line|
+	    query << line
+	  end
+	end
+	
+	begin
+		result = m.olap.execute query
+	rescue Mondrian::OLAP::Error => e
+		puts e.root_cause
+	end
+
+	puts result.to_html
+end

@@ -13,6 +13,10 @@ describe "Models from system" do
 	end
 
 	context "Storing measurement" do
+
+		before :all do
+			ActiveRecord::Base.logger = Logger.new("/dev/null")
+		end
 		
 		it "can be stored" do
 			m = read_json "denormalized-JJansaSDS-twitter_friends_count.json"
@@ -30,8 +34,6 @@ describe "Models from system" do
 			me2.id.should_not be_nil
 			me3.id.should_not be_nil
 		end
-
-
 	end
 
 end

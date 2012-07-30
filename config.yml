@@ -3,12 +3,23 @@ development:
     adapter: jdbcmysql
     database: politiki_bi
     username: politiki_bi
+  olap:
+    driver: mysql
+    host: localhost
+    database: politiki_bi
+    username: politiki_bi
 
 test:
   database:
     adapter: jdbcmysql
     database: politiki_bi_test
     username: politiki_bi
+  olap:
+    driver: mysql
+    host: localhost
+    database: politiki_bi_test
+    username: politiki_bi
+    password:
 
 production:
   database:
