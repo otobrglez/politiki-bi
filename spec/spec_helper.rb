@@ -8,8 +8,7 @@ require "java"
 ENV["RACK_ENV"] = "test"
 
 require "lib/manager"
-
-# require "api"
+require "api"
 
 require "helpers"
 
