@@ -1,4 +1,8 @@
 development:
+  username: pimpim
+  password: pim123
+  politiki_uri: "http://localhost:3000/api/"
+  amqp_url: "amqp://admin:admin123@localhost/politiki_dev"
   database:
     adapter: jdbcmysql
     database: politiki_bi
@@ -10,6 +14,10 @@ development:
     username: politiki_bi
 
 test:
+  username: pimpim
+  password: pim123
+  politiki_uri: "http://localhost:3000/api/"
+  amqp_url: "amqp://admin:admin123@localhost/politiki_dev"
   database:
     adapter: jdbcmysql
     database: politiki_bi_test

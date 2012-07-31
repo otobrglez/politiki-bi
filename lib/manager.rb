@@ -1,17 +1,15 @@
 # By Oto Brglez - <oto.brglez@opalab.com>
 
 require 'java'
-
 require 'active_support'
 require 'active_record'
 require 'active_support/dependencies'
-
 require 'logger'
-
 require 'jdbc/mysql'
-
 require 'lib/politiki_olap_schema'
 require 'lib/models'
+require 'httparty'
+require 'erb'
 
 class Hash
 
@@ -40,6 +38,12 @@ class Manager
 	end
 
 	def config
-		@config ||= YAML.load(File.read("config.yml"))[ENV["RACK_ENV"] || "development"]
+		@config ||= YAML.load(ERB.new(File.read("config.yml")).result) [ENV["RACK_ENV"] || "development"]
+	end
+
+	def measurement id
+		HTTParty.get("#{config['politiki_uri']}#{id}/denormalized.json",{
+			:basic_auth => {:username => config['username'], :password => config['password']}
+		})
 	end
 end

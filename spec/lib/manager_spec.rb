@@ -20,8 +20,14 @@ describe Manager do
 		it "has olap" do
 			m.olap.cube('Measurements').should_not be_nil
 			m.olap.cube('Measurements').dimension_names.should include "Time"
-			# puts m.olap.cube('Measurements').dimension('Time').hierarchy.inspect
-			#.level_names include "Year"
+		end
+	end
+
+	context "Retriving Measurements" do
+		let(:m){ Manager.new }
+		
+		it "can retrive measurement" do
+			m.measurement("4fe3118aba6fc02eb5001c45")["type"].should =~ /media/
 		end
 	end
 

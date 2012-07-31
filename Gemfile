@@ -22,8 +22,11 @@ gem 'jruby-openssl'
 gem 'oj'
 gem 'json-jruby'
 
-
 gem 'rake'
+
+gem 'foreman'
+gem 'amqp'
+gem 'httparty'
 
 group :development, :test do
 	gem 'rspec'

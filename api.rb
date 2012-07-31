@@ -18,15 +18,9 @@ class API < Grape::API
 		def olap; @olap ||= Manager.new.olap; end
 	end
 
-	get '/mdx' do
+	post '/mdx' do
 		throw "Missing MDX query as parameter" if params[:mdx].nil? or params[:mdx] == ""
-
 		out = olap.execute(params[:mdx])
-
-		{
-			:result => out
-		}
+		{ :result => out, :html => out.to_html }
 	end
-
-
 end
